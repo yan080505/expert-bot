@@ -20,11 +20,13 @@
   "dependencies": {
     "@vk-io/hear": "^1.1.0",
     "dotenv-safe": "^8.2.0",
+    "fs": "^0.0.1-security",
     "fs-extra": "^10.0.0",
     "node-fetch": "^2.6.1",
     "path": "^0.12.7",
     "redis": "^3.1.2",
     "request": "^2.88.2",
+    "url": "^0.11.0",
     "vk-io": "^4.3.2"
   },
   "devDependencies": {

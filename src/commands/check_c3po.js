@@ -1,9 +1,13 @@
 import { hearManager } from "../bot.js";
 import { getIdsByContext } from "../repository/get_ids_by_context.js";
 import { getInfoAboutExpertsC3po } from "../repository/get_info_about_experts_c3po.js";
+import { Statistics } from "../repository/stat.js";
 
 export function check_c3po_command() {
     hearManager.hear(/^.?ч(?:\s+?\[id[0-9]+\|[\s\S]+\])?$/i, async (context) => {
+
+        let timeStart = new Date()
+
         let ids = getIdsByContext(context)
 
         if (ids.length == 0) {
@@ -15,7 +19,6 @@ export function check_c3po_command() {
         if (data == null)
             return context.send('Попробуйте позже');
 
-        console.log(data)
         let message = '';
         for (let i = 0; i < ids.length; i++) {
             let user = data[i]
@@ -26,6 +29,10 @@ export function check_c3po_command() {
                 message += `🧐 ID: @id${user.info.user_id}\n\t❌ Не эксперт\n\n`
             }
         }
-        context.send(message, { disable_mentions: 1 })
+        await context.send(message, { disable_mentions: 1 })
+
+        let timeEnd = new Date()
+
+        Statistics.add("ч", timeEnd - timeStart)
     });
 }
