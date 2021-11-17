@@ -1,5 +1,6 @@
 import { bot, start } from "./bot.js";
 import { check_command } from "./commands/check.js";
+import { check_c3po_command } from "./commands/check_c3po.js";
 import { help_command } from "./commands/help.js";
 import { ping_command } from "./commands/ping.js";
 import { setup_hear_middleware } from "./middlewares/hear.js";
@@ -13,5 +14,6 @@ setup_hear_middleware(bot);
 ping_command();
 help_command();
 check_command();
+check_c3po_command();
 
 start();
