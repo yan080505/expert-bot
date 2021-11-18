@@ -24,7 +24,7 @@ setInterval(function () {
             return
         }
     })
-}, 60000)
+}, 600000)
 
 export class Statistics {
 
